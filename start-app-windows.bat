@@ -1,0 +1,1 @@
+start \\Mac\Home\Documents\Electron-Projects\eddy-g\dist\win-unpacked\"Eddy G.exe" --disable-gpu-sandbox

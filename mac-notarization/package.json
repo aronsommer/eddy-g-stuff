@@ -1,0 +1,52 @@
+{
+  "name": "ElectronWebView",
+  "version": "1.0.0",
+  "description": "ElectronWebView",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "repository": "https://github.com/aronsommer/electron-webview",
+  "keywords": [
+    "Electron"
+  ],
+  "author": "Aron Sommer",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^17.0.1",
+    "electron-builder": "^22.14.13",
+    "electron-notarize": "^1.1.1"
+  },
+  "build": {
+    "appId": "com.aronsommer.electronwebview",
+    "afterSign": "mac-build/notarize.js",
+    "mac": {
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "mac-build/entitlements.mac.plist",
+      "entitlementsInherit": "mac-build/entitlements.mac.plist"
+    },
+    "dmg": {
+      "sign": false
+    },
+    "directories": {
+      "buildResources": "resources"
+    },
+    "extraResources": [
+      "./content/**",
+      "settings.json",
+      {
+        "from": "binaries/${os}",
+        "to": "binaries",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  },
+  "dependencies": {
+    "electron-prompt": "^1.7.0"
+  }
+}

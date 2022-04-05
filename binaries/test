@@ -1,0 +1,19 @@
+#!/bin/bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd "${DIR}"
+
+pwd
+
+echo "test start"
+
+sleep 2
+
+echo "test finish"
+
+osascript -e 'display alert "Test is finished"'
+
+echo "test produce error"
+
+# this cd will fail
+
+cd bjjbbjbgrccbriugii

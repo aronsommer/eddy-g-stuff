@@ -1,0 +1,7 @@
+Requires homebrew and than snapcraft:
+
+brew install snapcraft
+
+Than build with this command:
+
+yarn dist --linux --arm64

@@ -1,0 +1,5 @@
+In Windows Terminal:
+
+start "Eddy G.exe" --disable-gpu-sandbox
+
+start "\\Mac\Home\Documents\Electron-Projects\eddy-g\dist\win-unpacked\Eddy G.exe" --disable-gpu-sandbox

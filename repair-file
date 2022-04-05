@@ -1,0 +1,12 @@
+#!/bin/bash
+
+osascript -e 'display alert "Choose file to repair"'
+
+myFile=$(osascript -e 'tell application (path to frontmost application as text)
+set MyFile to choose file
+POSIX path of MyFile
+end')
+
+echo $myFile
+
+xattr -d com.apple.quarantine $myFile

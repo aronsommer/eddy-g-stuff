@@ -1,0 +1,30 @@
+#!/bin/bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd "${DIR}/../content"
+
+pwd
+
+#git_repo=https://github.com/aronsommer/eddy-g.git
+#git_repo=$(grep -o 'http[s]*:[^"]*' ../settings.json)
+#echo "git_repo from settings.json: "${git_repo}
+git_repo=$1
+echo "git_repo from argument1: "$1
+echo "git_repo_branch from argument2: "$2
+
+if [ -d .git ]; then
+    : # This is a git repository
+    echo "Its a git"
+    ../binaries/git_xcode13 clean -df
+    ../binaries/git_xcode13 reset --hard
+    ../binaries/git_xcode13 fetch origin
+    ../binaries/git_xcode13 pull origin main
+else
+    : # This is not a git repository
+    echo "Its not a git"
+    ../binaries/git_xcode13 init
+    ../binaries/git_xcode13 remote add origin ${git_repo}
+    ../binaries/git_xcode13 clean -df
+    ../binaries/git_xcode13 reset --hard
+    ../binaries/git_xcode13 fetch origin
+    ../binaries/git_xcode13 pull origin main
+fi
